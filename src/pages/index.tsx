@@ -1,12 +1,8 @@
 import { type NextPage } from "next";
-
-
-import { api } from "~/utils/api";
+import CatalogCategories from "~/components/CatalogCategories";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
-  return <></>;
+  return <CatalogCategories />;
 };
 
 export default Home;

@@ -26,6 +26,7 @@ const Footer = () => {
   );
 };
 
+
 export default Footer;
 
 interface IFooterColumn
