@@ -1,5 +1,6 @@
 import React from "react";
 import { api } from "~/utils/api";
+import Link from "next/link";
 
 const CatalogCategories = () => {
   const { data } = api.category.getAll.useQuery();
@@ -7,13 +8,16 @@ const CatalogCategories = () => {
   const [subCatalog, setSubCatalog] = React.useState<number | null>();
 
   return (
-    <div>
+    <div onClick={() => setSubCatalog(null)}>
       <div className="relative z-20 m-2 flex gap-4 rounded-lg bg-white">
         <div className="">
           {data?.map((category) => (
             <div
               onMouseEnter={() => setSubCatalog(category.id)}
               key={category.id}
+              className={`${
+                subCatalog === category.id ? "text-orange-400" : ""
+              }`}
             >
               {category.title}
             </div>
@@ -24,7 +28,13 @@ const CatalogCategories = () => {
             {data
               ?.find((category) => category.id === subCatalog)
               ?.subCategories.map((subCategory) => (
-                <div key={subCategory.title}>{subCategory.title}</div>
+                <Link
+                  href={`/${subCategory.slug}`}
+                  className="block hover:text-orange-400"
+                  key={subCategory.title}
+                >
+                  {subCategory.title}
+                </Link>
               ))}
           </div>
         )}
