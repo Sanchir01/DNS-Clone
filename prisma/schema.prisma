@@ -2,19 +2,20 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Category {
-    id         Int        @id @default(autoincrement())
-    title      String
-    slug       String     @unique
-    purentId   Int?
-    parent     Category?   @relation("parentSubCategories",fields: [purentId], references: [id])
-    subCategories Category[] @relation("parentSubCategories")
+  id            Int        @id @default(autoincrement())
+  title         String
+  slug          String     @unique
+  Image         String?
+  purentId      Int?
+  parent        Category?  @relation("parentSubCategories", fields: [purentId], references: [id])
+  subCategories Category[] @relation("parentSubCategories")
 }

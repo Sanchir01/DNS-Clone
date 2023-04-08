@@ -15,9 +15,7 @@ const CatalogCategories = () => {
             <div
               onMouseEnter={() => setSubCatalog(category.id)}
               key={category.id}
-              className={`${
-                subCatalog === category.id ? "text-orange-400" : ""
-              }`}
+              className={subCatalog === category.id ? "text-orange-400" : ""}
             >
               {category.title}
             </div>

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const Page: NextPage = () => {
   const router = useRouter();
   const { category } = router.query;
-  return <div>1231</div>;
+  return <div>1231 : {category}</div>;
 };
 
 export default Page;
