@@ -26,13 +26,23 @@ const CatalogCategories = () => {
             {data
               ?.find((category) => category.id === subCatalog)
               ?.subCategories.map((subCategory) => (
-                <Link
-                  href={`/${subCategory.slug}`}
-                  className="block hover:text-orange-400"
-                  key={subCategory.title}
-                >
-                  {subCategory.title}
-                </Link>
+                <div key={subCategory.id}>
+                  <Link
+                    href={`catalog/${subCategory.slug}`}
+                    className="block font-bold hover:text-orange-400"
+                  >
+                    {subCategory.title}
+                  </Link>
+                  {subCategory.subCategories.map((lvl3Category) => (
+                    <Link
+                      href={`catalog/${lvl3Category.slug}`}
+                      key={lvl3Category.id}
+                      className="block hover:text-orange-400"
+                    >
+                      {lvl3Category.title}
+                    </Link>
+                  ))}
+                </div>
               ))}
           </div>
         )}

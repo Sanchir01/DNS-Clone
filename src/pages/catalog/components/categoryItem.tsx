@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NextPage } from "next";
 import { RouterOutputs } from "~/utils/api";
+import Link from "next/link";
 
 const CategoryItem = ({
   category,
@@ -24,7 +25,9 @@ const CategoryItem = ({
           <ul>
             {category.subCategories.map((subCategory) => (
               <li className="hover:text-orange-400" key={subCategory.id}>
-                {subCategory.title}
+                <Link href={`catalog/lvl2/${subCategory.slug}`}>
+                  {subCategory.title}
+                </Link>
               </li>
             ))}
           </ul>
