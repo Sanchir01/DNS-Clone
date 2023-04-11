@@ -11,16 +11,12 @@ export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
 };
 
 type AppPropsWithLayout = AppProps & {
-  component: NextPageWithLayout;
+  Component: NextPageWithLayout;
 };
 
 const MyApp = function ({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
-  return getLayout(
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  );
+  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>);
+  return getLayout(<Component {...pageProps} />);
 };
 
-export default api.withTRPC(MyApp);
+export default api.withTRPC(MyApp as AppType);
